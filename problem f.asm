@@ -5,26 +5,27 @@
 org 100h
 
 lea si,arr
+lea di,arr2
+lea bp,sarr
+
 mov cx,5
-mov al,0
 
 label:
 
-add al,[si]
+mov al,[si]
+mov bl,[di]
+add al,bl
+mov [bp],al
 inc si
+inc di
+inc bp
 
-loop label
-
-mov bl,5
-div bl 
-
-add al,'0'
-mov dl,al
-mov ah,2
-int 21h
+Loop label
 
 ret
 
 arr db 1,2,3,4,5
+arr2 db 5,4,3,2,1
+sarr db 5 dup(?)
 
 
